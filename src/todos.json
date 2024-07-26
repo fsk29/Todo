@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "task": "Buy Groceries"
+  },
+  {
+    "id": 2,
+    "task": "Finish React Native Tutorial"
+  },
+  {
+    "id": 3,
+    "task": "Prepare for Meeting"
+  },
+  {
+    "id": 4,
+    "task": "Exercise"
+  },
+  {
+    "id": 5,
+    "task": "Call Parents"
+  },
+  {
+    "id": 6,
+    "task": "Work on Discord Bot Project"
+  },
+  {
+    "id": 7,
+    "task": "Read a Book"
+  },
+  {
+    "id": 8,
+    "task": "Clean the House"
+  },
+  {
+    "id": 9,
+    "task": "Plan Weekend Getaway"
+  },
+  {
+    "id": 10,
+    "task": "Learn a New Recipe"
+  }
+]
