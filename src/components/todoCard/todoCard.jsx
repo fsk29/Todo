@@ -1,13 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { styles } from "./todoCard.style";
 
 
-const todoCard = ({ todo }) => {
+const todoCard = ({ todo, onToggleTodo, onDeleteTodo }) => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>{todo.task}</Text>
-        </View>
+        <TouchableOpacity
+      onPress={() => onToggleTodo(todo.id)}
+      onLongPress={() => onDeleteTodo(todo.id)}
+    >
+      <View style={[styles.container, todo.completed && styles.completedContainer]}>
+        <Text style={[styles.text, todo.completed && styles.completedText]}>
+          {todo.task}
+        </Text>
+      </View>
+    </TouchableOpacity>
     )
 }
 

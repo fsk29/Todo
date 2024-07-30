@@ -2,12 +2,35 @@ import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet, Text, View, FlatList} from 'react-native';
 import SearchCard from './components/searchCard';
 import TodoCard from './components/todoCard';
-import todo_data from './todos.json'
 
 const App = () => {
-  const [todos, setTodos] = useState(todo_data);
-  const renderTodos = ({item}) => <TodoCard todo={item} />;
-  const ItemSeparator = () => <View style={styles.seperator}/>;
+  const [todos, setTodos] = useState([]);
+  const [idCounter, setIdCounter] = useState(1);
+
+  const addTodo = (task) => {
+    const newTodo = {
+      id: idCounter,
+      task: task,
+      completed: false,
+    };
+    setTodos([...todos, newTodo]);
+    setIdCounter(idCounter + 1);
+  };
+
+  const toggleTodo = (id) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const renderTodos = ({item}) => (
+    <TodoCard todo={item} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo} />
+  );
+  const ItemSeparator = () => <View style={styles.seperator} />;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.innerContainer}>
@@ -16,13 +39,13 @@ const App = () => {
           <Text style={styles.header}>{todos.length}</Text>
         </View>
         <FlatList
-        keyExtractor={item => item.id.toString()}
-        data={todo_data}
-        renderItem={renderTodos}
-        ItemSeparatorComponent={ItemSeparator}
-        showsVerticalScrollIndicator={false}
-        /> 
-        <SearchCard />
+          keyExtractor={item => item.id.toString()}
+          data={todos}
+          renderItem={renderTodos}
+          ItemSeparatorComponent={ItemSeparator}
+          showsVerticalScrollIndicator={false}
+        />
+        <SearchCard onAddTodo={addTodo} />
       </View>
     </SafeAreaView>
   );
@@ -54,5 +77,5 @@ const styles = StyleSheet.create({
   },
   seperator: {
     height: 10,
-  }
+  },
 });

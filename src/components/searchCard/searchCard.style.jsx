@@ -15,11 +15,24 @@ export default styles = StyleSheet.create({
     fontSize: 16,
   },
   saveButton: {
+    borderRadius: 5,
+    marginTop: 5,
+    padding: 10,
     backgroundColor: '#ffa500',
-    borderRadius: 10,
-    borderWidth: 10,
-    borderColor: '#ffa500',
-    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  saveButtonPassive:{
+    backgroundColor: '#BDBDBD'
+  },
+  saveButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  errorText: {
+    color: 'red',
+    marginTop: 5,
   },
   seperator:{
     height: 1,
